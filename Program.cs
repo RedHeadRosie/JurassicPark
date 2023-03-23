@@ -80,9 +80,24 @@ namespace JurassicPark
 
                 if (response == "V" || response == "v")
                 {
-                    foreach (var output in dinosaurs)
+                    Console.WriteLine("Would you like to see the dinosaurs in (N)name or (E)enclosure number? ");
+                    string viewingOptions = Console.ReadLine();
+                    if (viewingOptions == "N" || viewingOptions == "n")
                     {
-                        Console.WriteLine(output.Description());
+                        var dinoNames = dinosaurs.Select(dinosaur => dinosaur.Name);
+                        Console.WriteLine(dinoNames);
+                    }
+                    else if (viewingOptions == "E" || viewingOptions == "e")
+                    {
+                        foreach (var output in dinosaurs)
+                        {
+                            Console.WriteLine(output.Description());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have not choose N or E so you will be returned to the main menu");
+                        break;
                     }
                 }
                 else if (response == "A" || response == "a")

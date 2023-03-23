@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace JurassicPark
 {
@@ -14,7 +15,7 @@ namespace JurassicPark
 
         public string Description()
         {
-            string newDescript = ("Your Dino's name is " + Name + " and it's diet type is " + DietType + ". It weighs " + Weight + " and it's kept in enclosure number " + EnclosureNumber + ".");
+            string newDescript = (Name + " has a diet type of " + DietType + ". It weighs " + Weight + " and it's kept in enclosure number " + EnclosureNumber + ". It was added on " + WhenAcquired + ".");
             return newDescript;
         }
     }
@@ -46,53 +47,80 @@ namespace JurassicPark
 
         static void Main(string[] args)
         {
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("    Welcome to Jurassic Park      ");
-            Console.WriteLine("----------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("─────────────────────");
+            Console.WriteLine("───────────████████──");
+            Console.WriteLine("──────────███▄███████");
+            Console.WriteLine("──────────███████████     ----------------------------------");
+            Console.WriteLine("──────────███████████         Welcome to Jurassic Park      ");
+            Console.WriteLine("──────────██████─────     ----------------------------------");
+            Console.WriteLine("──────────█████████──");
+            Console.WriteLine("█───────███████──────");
+            Console.WriteLine("██────████████████───");
+            Console.WriteLine("███──██████████──█───");
+            Console.WriteLine("███████████████──────");
+            Console.WriteLine("███████████████──────");
+            Console.WriteLine("─█████████████───────");
+            Console.WriteLine("──███████████────────");
+            Console.WriteLine("────████████─────────");
+            Console.WriteLine("─────███──██─────────");
+            Console.WriteLine("─────██────█─────────");
+            Console.WriteLine("─────█─────█─────────");
+            Console.WriteLine("─────██────██────────");
+            Console.WriteLine("─────────────────────");
             Console.WriteLine();
 
             var dinosaurs = new List<Dinosaur>();
-
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("(V)view, (A)add, (R)remove, (T)transfer, (S)summary or (Q)quit");
             Console.WriteLine();
             string response = Console.ReadLine();
-            if (response == "V" || response == "v")
+            while (response != "Q" || response != "q")
             {
 
-            }
-            else if (response == "A" || response == "a")
-            {
-                var dinoToAdd = new Dinosaur();
-                dinoToAdd.Name = PromptForString("What is the name of your dinosaur? ");
-                dinoToAdd.DietType = PromptForString("Is your dinosaur a herbivore or a carnivore? ");
-                dinoToAdd.Weight = PromptForInteger("What is the weight of your dinosaur? ");
-                dinoToAdd.EnclosureNumber = PromptForInteger("Which enclosure number is your dinosaur in? ");
-                dinosaurs.Add(dinoToAdd);
-                Console.WriteLine($"{dinoToAdd.Description()}");
+                if (response == "V" || response == "v")
+                {
+                    foreach (var output in dinosaurs)
+                    {
+                        Console.WriteLine(output.Description());
+                    }
+                }
+                else if (response == "A" || response == "a")
+                {
+                    var dinoToAdd = new Dinosaur();
+                    dinoToAdd.Name = PromptForString("What is the name of your dinosaur? ");
+                    dinoToAdd.DietType = PromptForString("Is your dinosaur a herbivore or a carnivore? ");
+                    dinoToAdd.Weight = PromptForInteger("What is the weight of your dinosaur? ");
+                    dinoToAdd.EnclosureNumber = PromptForInteger("Which enclosure number is your dinosaur in? ");
+                    dinosaurs.Add(dinoToAdd);
+                    //Console.WriteLine($"{dinoToAdd.Description()}");
+                    Console.WriteLine();
+                    Console.WriteLine("Dino Added!");
+                    Console.WriteLine();
+
+                }
+                else if (response == "R" || response == "r")
+                {
+
+                }
+                else if (response == "T" || response == "t")
+                {
+
+                }
+                else if (response == "S" || response == "s")
+                {
+
+                }
+                else if (response == "Q" || response == "q")
+                {
+                    break;
+                }
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("(V)view, (A)add, (R)remove, (T)transfer, (S)summary or (Q)quit");
                 Console.WriteLine();
-                Console.WriteLine("Dino Added!");
-                Console.WriteLine();
+                response = Console.ReadLine();
 
             }
-            else if (response == "R" || response == "r")
-            {
-
-            }
-            else if (response == "T" || response == "t")
-            {
-
-            }
-            else if (response == "S" || response == "s")
-            {
-
-            }
-            else if (response == "Q" || response == "q")
-            {
-
-            }
-
-
 
 
         }
